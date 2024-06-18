@@ -1,0 +1,56 @@
+<div class="container">
+    <h1>Listado de Transacciones</h1>
+    
+    <div class="row">
+        <div class="col-3 d-flex mt-auto">
+            <button type="button" class="btn btn-primary" (click)="getAllTransacciones()">Listar Todos</button>
+        </div>
+        <div class="col-2">
+            <label for="a" class="form-label">Moneda Origen</label>
+            <select id="a" class="form-select" name="filtroOrigen" [(ngModel)]="filtroOrigen">
+                <option value="" disabled selected>Elija Moneda</option>
+                <option value="USD">USD Dólares EEUU</option>
+                <option value="EUR">EUR Euros</option>
+              </select>
+        </div>
+        <div class="col-2">
+            <label for="a" class="form-label">Moneda Destino</label>
+            <select id="a" class="form-select" name="monedaDestino" name="filtroDestino" [(ngModel)]="filtroDestino">
+                <option value="" disabled selected>Elija Moneda</option>
+                <option value="USD">USD Dólares EEUU</option>
+                <option value="EUR">EUR Euros</option>
+            </select>
+        </div>
+        <div class="col-2 d-flex mt-auto">
+            <button type="button" class="btn btn-success" (click)="getPorMonedas()">Filtrar</button>
+        </div>
+        <div class="col-3 d-flex mt-auto">
+            <button type="button" class="btn btn-info ms-auto" (click)="agregar()">+ Registrar Transaccion</button>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Moneda de Origen</th>
+                <th scope="col">Cantidad de Origen</th>
+                <th scope="col">Moneda de Destino</th>
+                <th scope="col">Cantidad de Destino</th>
+                <th scope="col">Tasa de Conversión</th>
+                <th scope="col">Email de Cliente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let t of transacciones">
+                <th class="text-start" scope="row">{{t._id}}</th>
+                <td>{{t.monedaOrigen}}</td>
+                <td>{{t.cantidadOrigen | currency: '$ ':'code':'1.2'}}</td>
+                <td>{{t.monedaDestino}}</td>
+                <td>{{t.cantidadDestino}}</td>
+                <td>{{t.tasaConversion}}</td>
+                <td>{{t.emailCliente}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

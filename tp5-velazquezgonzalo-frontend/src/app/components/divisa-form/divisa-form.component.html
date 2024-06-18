@@ -1,0 +1,33 @@
+<div class="container ">
+    <h1>Formulario para convertir divisas</h1>
+    <div class="form-container container d-flex justify-content-center">    
+        <form class="divisas-form row">
+                <h5 class="form-title text-center">Conversor de Divisas</h5>
+            <div class="">
+              <label for="cantidad" class="form-label">Cantidad</label>
+              <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" name="cantidadOrigen" [(ngModel)]="transaccion.cantidadOrigen">
+            </div>
+            <div class="">
+                <label for="de" class="form-label">De</label>
+                <select id="de" class="form-select" name="monedaOrigen" [(ngModel)]="transaccion.monedaOrigen">
+                  <option selected value="" disabled >Elija Moneda</option>
+                  <option value="USD">USD Dólares EEUU</option>
+                  <option value="EUR">EUR Euros</option>
+                </select>
+            </div>
+            <div class="">
+                <label for="a" class="form-label">A</label>
+                <select id="a" class="form-select" name="monedaDestino" [(ngModel)]="transaccion.monedaDestino">
+                  <option value="" disabled selected>Elija Moneda</option>
+                  <option value="USD">USD Dólares EEUU</option>
+                  <option value="EUR">EUR Euros</option>
+                </select>
+            </div>
+            <div class="">
+              <input type="text" class="form-control" id="resultado" name="cantidadDestino" readonly [(ngModel)]="transaccion.cantidadDestino">
+            </div>
+            <div class="">
+              <button type="submit" class="btn btn-warning" (click)="convertirDivisa()">Convertir ➔</button>
+            </div>
+        </form>
+</div>

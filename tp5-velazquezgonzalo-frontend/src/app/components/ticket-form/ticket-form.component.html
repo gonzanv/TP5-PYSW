@@ -1,0 +1,36 @@
+<div class="container d-flex justify-content-center">
+    <form class="row g-3" #productoForm="ngForm">
+        <div class="col-12 text-center bg-success text-white form-title">
+            <h3>Formulario de Tickets</h3>
+        </div>
+        <div class="col-md-6">
+          <label for="inputNombre" class="form-label">Precio del Ticket</label>
+          <input type="number" class="form-control" id="inputNombre" name="precioTicket" [(ngModel)]="ticket.precioTicket" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputDescripcion" class="form-label">Fecha de Compra</label>
+            <input type="date" class="form-control" id="inputDescripcion" name="fechaCompra" [(ngModel)]="ticket.fechaCompra" required>
+        </div>
+        <div class="col-md-6">
+            <label for="a" class="form-label">Espectador</label>
+            <select id="a" class="form-select" name="espectador" [(ngModel)]="ticket.espectador" required>
+                <option value="" disabled selected>Seleccione...</option>
+                <option *ngFor="let e of espectadores" [ngValue]="e">{{e.apellido}}, {{e.nombre}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="a" class="form-label">Categoria de espectador</label>
+            <select id="a" class="form-select" name="categoriaEspectador" [(ngModel)]="ticket.categoriaEspectador" required>
+                <option value="" disabled selected>Seleccione...</option>
+                <option value="l">Local</option>
+                <option value="e">Extranjero</option>
+            </select>
+        </div>
+        <div class="col-12 text-center">
+          <button class="btn btn-danger" (click)="volver()">Volver al Listado</button>
+          <button *ngIf="accion === 'new'" type="submit" class="btn btn-primary" (click)="registrar()" [disabled]="!productoForm.form.valid">Registrar Venta</button>
+          <button *ngIf="accion === 'update'" type="submit" class="btn btn-warning" (click)="modificar()" [disabled]="!productoForm.form.valid">Modificar Venta</button>
+        </div>
+        
+      </form>
+</div>

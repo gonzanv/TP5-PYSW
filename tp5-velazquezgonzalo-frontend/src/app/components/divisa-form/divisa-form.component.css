@@ -1,0 +1,28 @@
+form{
+    border: 3px solid rgb(92 , 156, 204);
+}
+
+.form-title{
+    background-color: rgb(2, 64, 108);
+    color:white;
+    text-align: center;
+    padding-top: .5rem;
+}
+  
+  .divisas-form{
+    background: linear-gradient(rgb(47,97,134), rgb(2,64,108));
+    height: 25rem;
+    color:white;
+  }
+  
+  .form-container{
+    
+    width: 15rem;
+    
+    
+  }
+  
+  .divisas-form button{
+    width: 100%;
+  }
+  
