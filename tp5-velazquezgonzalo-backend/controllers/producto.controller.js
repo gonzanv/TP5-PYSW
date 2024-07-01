@@ -1,4 +1,5 @@
 const Producto = require('../models/producto'); 
+const Historial = require('../models/historial'); 
 const productoCtrl = {} 
  
 productoCtrl.getProductos = async (req, res) => { 
@@ -39,7 +40,14 @@ productoCtrl.createProducto = async (req, res) => {
 } 
  
 productoCtrl.editProducto = async (req, res) => { 
+    const anteriorPrecio = await Producto.findById(req.body._id); 
     const vproducto =  new Producto(req.body); 
+    const vhistorial = new Historial({
+        monto: anteriorPrecio.precio,
+        fecha: new Date(),
+        producto: vproducto._id
+    })
+    vhistorial.save();
     try { 
         await Producto.updateOne({_id: req.body._id}, vproducto); 
         res.json({ 
